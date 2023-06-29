@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.25)
+project(butterfly_counting)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(graph_generator bipartite_graph_generator.cpp)
+add_executable(butterfly_counting BFC.cpp monarch.cpp Bigraph.h)
