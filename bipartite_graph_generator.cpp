@@ -27,14 +27,14 @@ BiGraph generateBipartiteGraph(uint64_t num_left_vertices, uint64_t num_right_ve
             edge_count++;
         }
     }
-
+    std::cout << edge_count << std::endl;
     return BiGraph{num_left_vertices, num_right_vertices, edgeSet};
 }
 
 int main(){
-    uint64_t left_graph_nodes_num = 10000;
-    uint64_t right_graph_nodes_num = 10000;
-    uint64_t edge_num = 10000000;
+    uint64_t left_graph_nodes_num = 200000;
+    uint64_t right_graph_nodes_num = 200000;
+    uint64_t edge_num = 264245;
     auto g= generateBipartiteGraph(left_graph_nodes_num, right_graph_nodes_num, edge_num);
     g.printEdgesToFile("in.in");
     return 0;

@@ -176,11 +176,11 @@ void get_graph() {
 ll exact_butterfly_counting(vector < vector <int> > &graph) {
 	int side = n_wedge_in_partition[0] < n_wedge_in_partition[1];
 	ld res = 0;
-	for (int vertex = side == 0 ? 0 : SZ(vertices_in_left) ; vertex < largest_index_in_partition[side]; vertex++) {
+	for (int vertex = side == 0 ? 0 : vertices_in_left.size() ; vertex < largest_index_in_partition[side]; vertex++) {
 		int idx = 0;
-		for (int j = 0; j < SZ(graph[vertex]); j++) {
+		for (int j = 0; j < graph[vertex].size(); j++) {
 			int neighbor = graph[vertex][j];
-			for (int k = 0; k < SZ(graph[neighbor]); k++) {
+			for (int k = 0; k < graph[neighbor].size(); k++) {
 				int two_hop_neighborhood = graph[neighbor][k];
 				if (vertex > two_hop_neighborhood) {
 					res += hashmap_C[two_hop_neighborhood];
@@ -212,9 +212,3 @@ void read_the_graph() {
 	get_graph();
 }
 
-int main() {
-    read_the_graph();
-    exact_algorithm_time_tracker();
-	cerr << " Take a look at the output file ..." << endl;
-	return 0;
-}
