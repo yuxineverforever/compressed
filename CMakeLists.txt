@@ -31,8 +31,14 @@ endif ()
 # add_subdirectory(lib)
 #  include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(graph_generator bipartite_graph_generator.cpp)
-add_executable(butterfly_counting BFC.cpp monarch.cpp Bigraph.h)
+include_directories(header/)
+file(GLOB BIGRAPH_SOURCE "source/Bigraph.cpp" "source/hash.cpp" "source/countingAlgorithm.cpp")
+add_library(BIGRAPH_OBJECT OBJECT ${BIGRAPH_SOURCE})
+add_executable(graph_generator source/Bigraph_generator.cpp source)
+add_executable(butterfly_counting main.cpp)
+target_link_libraries(butterfly_counting BIGRAPH_OBJECT)
+target_link_libraries(graph_generator BIGRAPH_OBJECT)
+
 # 'Google_Tests_run' is the target name
 # 'test1.cpp tests2.cpp' are source files with tests
 # add_executable(Google_Tests_run test1.cpp tests2.cpp)
